@@ -11,12 +11,34 @@
                 <div class="sidebar-brand-text mx-3">SMKN <sup>1</sup></div>
             </a>
 
+            {{-- @can(')
+                <a class="sidebar-brand d-flex align-items-center justify-content-center @if(Request::is('dashboard')) active @endif" href="dashboard">
+                <div class="sidebar-brand-icon"> --}}
+                    {{-- <i class="fas fa-laugh-wink"></i> --}}
+                    {{-- <i class="fas fa-school"></i> --}}
+                {{-- </div>
+                <div class="sidebar-brand-text mx-3">SMKN <sup>1</sup></div>
+            </a>
+            <a class="sidebar-brand d-flex align-items-center justify-content-center @if(Request::is('dashboard')) active @endif" href="dashboard">
+                <div class="sidebar-brand-icon"> --}}
+                    {{-- <i class="fas fa-laugh-wink"></i> --}}
+                    {{-- <i class="fas fa-school"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">SMKN <sup>1</sup></div>
+            </a>
+            @endcan --}}
+            
+
+
+
+
+            @can('admin')
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item @if(Request::is('admin/dashboard')) active @endif">
-                <a class="nav-link" href="/admin/dashboard">
+            <li class="nav-item @if(Request::is('/dashboard')) active @endif">
+                <a class="nav-link" href="/dashboard">
                     <i class="fas fa-th-large"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -24,55 +46,133 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <li class="nav-item @if(Request::is('admin/siswa')) active @endif">
-                <a class="nav-link" href="/admin/siswa">
+            <li class="nav-item @if(Request::is('/siswa')) active @endif">
+                <a class="nav-link" href="siswa">
                 <i class="fas fa-users"></i>
                 <span>Siswa</span></a>
             </li>
 
-            <li class="nav-item @if(Request::is('admin/sarpras')) active @endif">
-                    <a class="nav-link" href="/admin/sarpras">
+            <li class="nav-item @if(Request::is('/sarpras')) active @endif">
+                    <a class="nav-link" href="sarpras">
                     <i class="fas fa-warehouse"></i>
                     <span>Sarana Prasarana</span></a>    
             </li>
             
-           <li class="nav-item @if(Request::is('admin/masterpeminjaman')) active @endif">
+           <li class="nav-item @if(Request::is('/masterpeminjaman')) active @endif">
                 <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-arrow-right"></i>
                     <span>Peminjaman</span>
                 </a>
-                <div id="collapseTwo" class="collapse @if(Request::is('admin/peminjaman') || Request::is('admin/peminjaman/create')) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="collapse @if(Request::is('/peminjaman') || Request::is('/peminjaman/create')) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item @if(Request::is('admin/peminjaman')) active @endif" href="/admin/peminjaman">Lihat Data<a>
-                        <a class="collapse-item @if(Request::is('admin/peminjaman/create')) active @endif" href="/admin/peminjaman/create">Form Peminjaman</a>
+                        <a class="collapse-item @if(Request::is('/peminjaman')) active @endif" href="/peminjaman">Lihat Data<a>
+                        <a class="collapse-item @if(Request::is('/peminjaman/create')) active @endif" href="/peminjaman/create">Form Peminjaman</a>
                     </div>
                 </div>
             </li>
 
-            <li class="nav-item @if(Request::is('admin/masterpengembalian')) active @endif">
+            <li class="nav-item @if(Request::is('/masterpengembalian')) active @endif">
                 <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseUtilities"
                 aria-expanded="true"  aria-controls="collapseUtilities">
                 <i class="fas fa-arrow-left"></i>
                 <span>Pengembalian</span>
             </a>
-                <div id="collapseUtilities" class="collapse @if(Request::is('admin/pengembalian') || Request::is('admin/pengembalian/create')) show @endif" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                <div id="collapseUtilities" class="collapse @if(Request::is('/pengembalian') || Request::is('/pengembalian/create')) show @endif" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item @if(Request::is('admin/pengembalian')) active @endif" href="/admin/pengembalian">Lihat Data<a>
-                        <a class="collapse-item @if(Request::is('admin/pengembalian/create')) active @endif" href="/admin/pengembalian/create">Form Pengembalian</a>
+                        <a class="collapse-item @if(Request::is('/pengembalian')) active @endif" href="/pengembalian">Lihat Data<a>
+                        <a class="collapse-item @if(Request::is('/pengembalian/create')) active @endif" href="/pengembalian/create">Form Pengembalian</a>
                     </div>
                 </div>
             </li>
 
-            <li class="nav-item @if(Request::is('admin/masterlaporan')) active @endif">
-                <a class="nav-link" href="/admin/laporan">
+            <li class="nav-item @if(Request::is('/masterlaporan')) active @endif">
+                <a class="nav-link" href="/laporan">
                 <i class="fas fa-solid fa-file-contract"></i>
                 <span>Laporan</span></a>
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
+            @endcan
 
+            @can('pj')
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item @if(Request::is('/dashboard')) active @endif">
+                <a class="nav-link" href="/dashboard">
+                    <i class="fas fa-th-large"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <hr class="sidebar-divider my-0">
+
+            <li class="nav-item @if(Request::is('/siswa')) active @endif">
+                <a class="nav-link" href="siswa">
+                <i class="fas fa-users"></i>
+                <span>Siswa</span></a>
+            </li>
+
+            <li class="nav-item @if(Request::is('/sarpras')) active @endif">
+                    <a class="nav-link" href="sarpras">
+                    <i class="fas fa-warehouse"></i>
+                    <span>Sarana Prasarana</span></a>    
+            </li>
+            
+           <li class="nav-item @if(Request::is('/masterpeminjaman')) active @endif">
+                <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-arrow-right"></i>
+                    <span>Peminjaman</span>
+                </a>
+                <div id="collapseTwo" class="collapse @if(Request::is('/peminjaman') || Request::is('/peminjaman/create')) show @endif" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item @if(Request::is('/peminjaman')) active @endif" href="/peminjaman">Lihat Data<a>
+                        <a class="collapse-item @if(Request::is('/peminjaman/create')) active @endif" href="/peminjaman/create">Form Peminjaman</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item @if(Request::is('/masterlaporan')) active @endif">
+                <a class="nav-link" href="/laporan">
+                <i class="fas fa-solid fa-file-contract"></i>
+                <span>Laporan</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            @endcan
+
+            @can('pg')
+            <hr class="sidebar-divider my-0">
+
+            <li class="nav-item @if(Request::is('/dashboard')) active @endif">
+                <a class="nav-link" href="/dashboard">
+                    <i class="fas fa-th-large"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <hr class="sidebar-divider my-0">
+
+            <li class="nav-item @if(Request::is('/masterpengembalian')) active @endif">
+                <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseUtilities"
+                aria-expanded="true"  aria-controls="collapseUtilities">
+                <i class="fas fa-arrow-left"></i>
+                <span>Pengembalian</span>
+            </a>
+                <div id="collapseUtilities" class="collapse @if(Request::is('/pengembalian') || Request::is('/pengembalian/create')) show @endif" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item @if(Request::is('/pengembalian')) active @endif" href="/pengembalian">Lihat Data<a>
+                        <a class="collapse-item @if(Request::is('/pengembalian/create')) active @endif" href="/pengembalian/create">Form Pengembalian</a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider my-0">
+            @endcan
+            
             <!-- Heading -->
             {{--<div class="sidebar-heading">
                 Interface

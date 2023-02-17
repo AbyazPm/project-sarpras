@@ -83,8 +83,10 @@
                 </div>
                 <div class="modal-body">Tekan tombol "Logout" jika ingin keluar.</div>
                 <div class="modal-footer">
+                    <form action="/logout" method="post">
+                        @csrf
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <input class="btn btn-primary" type="submit" value="Logout">
                 </div>
             </div>
         </div>

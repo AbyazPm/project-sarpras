@@ -10,7 +10,8 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
    use App\Http\Controllers\PeminjamanController;
    use App\Http\Controllers\PengembalianController;
    use App\Http\Controllers\LaporanController;
-
+   use App\Http\Controllers\LoginController;
+   
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,20 +24,37 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest')->name('login.post');
 
 Route::get('/admin', function () {
     return view('admin.app');
 });
 
-Route::prefix('admin')->group(function (){
+Route::middleware(['ga'])->group(function (){
 
-Route::resource('/dashboard', DashboardController::class);
-Route::resource('/siswa', SiswaController::class);
-Route::resource('/sarpras', SarprasController::class);
-Route::resource('/peminjaman', PeminjamanController::class);
-Route::resource('/pengembalian', PengembalianController::class);
-Route::resource('/laporan', LaporanController::class);
+    Route::resource('/siswa', SiswaController::class);
+    Route::resource('/sarpras', SarprasController::class);
+    Route::resource('/peminjaman', PeminjamanController::class);
+    Route::resource('/laporan', LaporanController::class);
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    
+});
+
+Route::middleware(['ja'])->group(function (){
+
+    Route::resource('/pengembalian', PengembalianController::class);
+
+});
+// Route::middleware(['auth'])->group(function (){
+
+
+// });
+
+Route::middleware(['ga'])->group(function (){
+
+    Route::resource('/dashboard', DashboardController::class);
 
 });
